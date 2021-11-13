@@ -26,7 +26,7 @@ router.route('/')
         // chk email already exists
         const old_user = await User.findOne({ email: email });
         if (old_user) {
-            res.status(409).send('409 Conflict : User already exists');
+            return res.status(409).send('409 Conflict : User already exists');
         }
 
 
