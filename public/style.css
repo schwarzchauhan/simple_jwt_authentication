@@ -1,0 +1,8 @@
+.my-form-cont {
+    max-width: 400px;
+    margin: 0 auto 0;
+    color: whitesmoke;
+    padding: 1rem;
+    background-color: #161b22;
+    border-radius: 5px;
+}
