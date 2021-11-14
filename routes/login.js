@@ -20,11 +20,12 @@ router.route('/')
 
         // chk email, password
         if (!(email && pwd)) {
-            res.status(400).send('all inputs are required');
+            return res.status(400).send('all inputs are required');
         }
 
         // chk user already exists
         const u = await User.findOne({ email: email });
+        console.log(u);
         // https://github.com/dcodeIO/bcrypt.js#usage---async
         // https://github.com/dcodeIO/bcrypt.js#compares-hash-callback-progresscallback
         const isCorrectPwd = await bcrypt.compare(pwd, u.password);
@@ -36,7 +37,7 @@ router.route('/')
             }, process.env.JWT_KEY, { expiresIn: '2h' });
             u.token = token;
             await u.save();
-            res.status(201).json(u);
+            return res.status(201).json(u);
         }
         res.status(401).send('invalid credentials');
 
