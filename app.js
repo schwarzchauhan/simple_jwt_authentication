@@ -3,7 +3,7 @@ require(`./config/database`).connect();
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
-// const loginRoute = require('./routes/login');
+const loginRoute = require('./routes/login');
 const registerRoute = require('./routes/register');
 const app = express();
 
@@ -20,7 +20,7 @@ app.use(express.urlencoded({
 }));
 
 app.use('/register', registerRoute);
-// app.use('/login', loginRoute);
+app.use('/login', loginRoute);
 
 app.route('/')
 

@@ -38,15 +38,15 @@ router.route('/')
             password: hash
         });
 
-        // creating & assigning token
+        // creating & assigning token sync-ly
         const token = jwt.sign({
             _id: u._id
         }, process.env.JWT_KEY, { expiresIn: '1h' });
         u.token = token;
-        console.log(u);
+        await u.save();
 
         // sending user successfully created response
-        res.status(200).json(u);
+        res.status(201).json(u);
 
     } catch (err) {
         console.log(err);
