@@ -3,6 +3,7 @@ require(`./config/database`).connect();
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
+const auth = require("./middleware/auth");
 const loginRoute = require('./routes/login');
 const registerRoute = require('./routes/register');
 const app = express();
@@ -34,7 +35,14 @@ app.route('/')
 });
 
 
-
+app.post("/welcome", auth, (req, res) => {
+    console.log(req.body);
+    console.log(req.query);
+    console.log(req.headers);
+    console.log(req.user);
+    console.log(req);
+    res.status(200).send("Welcome 🙌 ");
+});
 
 module.exports = app;
 // app.listen(process.env.PORT || 3000, function() {
