@@ -44,6 +44,8 @@ router.route('/')
         }, process.env.JWT_KEY, { expiresIn: '1h' });
         u.token = token;
         await u.save();
+        // https://expressjs.com/en/api.html#res.cookie
+        res.cookie('jwt', token);
 
         // sending user successfully created response
         res.status(201).json(u);
