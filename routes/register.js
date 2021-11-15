@@ -41,7 +41,7 @@ router.route('/')
         // creating & assigning token sync-ly
         const token = jwt.sign({
             _id: u._id
-        }, process.env.JWT_KEY, { expiresIn: '1h' });
+        }, process.env.JWT_KEY, { expiresIn: '50s' }); // https://stackoverflow.com/questions/45207104/how-to-set-jwt-token-expiry-time-to-maximum-in-nodejs
         u.token = token;
         await u.save();
         // https://expressjs.com/en/api.html#res.cookie
