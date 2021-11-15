@@ -1,3 +1,7 @@
+body {
+    background-image: linear-gradient(90deg, rgba(238, 130, 238, 0.5), rgba(76, 0, 130, 0.5), rgba(0, 0, 255, 0.5), rgba(0, 128, 0, 0.5), rgba(255, 255, 0, 0.5), rgba(255, 166, 0, 0.5), rgba(255, 0, 0, 0.5));
+}
+
 .my-form-cont {
     max-width: 400px;
     margin: 0 auto 0;

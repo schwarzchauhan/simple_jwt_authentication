@@ -29,8 +29,6 @@ router.route('/')
         // https://github.com/dcodeIO/bcrypt.js#usage---async
         // https://github.com/dcodeIO/bcrypt.js#compares-hash-callback-progresscallback
         const isCorrectPwd = await bcrypt.compare(pwd, u.password);
-        console.log(u);
-        console.log(isCorrectPwd);
         if (u && isCorrectPwd) {
             const token = jwt.sign({
                 _id: u._id
@@ -39,7 +37,9 @@ router.route('/')
             await u.save();
             // https://expressjs.com/en/api.html#res.cookie
             res.cookie('jwt', token);
-            return res.status(201).json(u);
+            console.log(u);
+            return res.redirect('/welcome');
+            // return res.status(201).json(u);
         }
         res.status(401).send('invalid credentials');
     } catch (err) {

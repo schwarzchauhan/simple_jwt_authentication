@@ -48,7 +48,9 @@ router.route('/')
         res.cookie('jwt', token);
 
         // sending user successfully created response
-        res.status(201).json(u);
+        console.log(u);
+        // res.status(201).json(u);
+        res.redirect('/welcome')
 
     } catch (err) {
         console.log(err);
