@@ -4,6 +4,7 @@ const User = require('../model/user');
 const config = process.env;
 
 const verifyToken = async(req, res, next) => {
+    console.log('----------------auth');
     console.log(req.cookies);
     // const token =
     //     req.body.token || req.query.token || req.headers["x-access-token"];
@@ -20,7 +21,10 @@ const verifyToken = async(req, res, next) => {
         console.log('decoded');
         console.log(decoded);
 
-        console.log('jwt token will expire on : ', new Date(decoded.exp * 1000));
+        const creation_time = new Date(decoded.iat * 1000);
+        const expiry_time = new Date(decoded.exp * 1000);
+        console.log('jwt token created on : ', creation_time.toLocaleString());
+        console.log('jwt token will expire on : ', expiry_time.toLocaleString());
 
         const u = await User.findOne({ _id: decoded._id });
         req.user = u;
@@ -29,7 +33,7 @@ const verifyToken = async(req, res, next) => {
     } catch (err) {
         console.log("Your session expired, please login again!!!");
         // return console.log(err);
-        return res.status(401).render('login');
+        return res.status(401).render('login', { someMsg: 'session expired, please login again' });
     }
     return next();
 };

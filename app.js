@@ -29,16 +29,18 @@ app.use('/login', loginRoute);
 app.route('/')
 
 .get((req, res) => {
-    res.status(200).json({
-        status: 'success',
-        data: {
-            message: '/'
-        }
-    });
+    // res.status(200).json({
+    //     status: 'success',
+    //     data: {
+    //         message: '/'
+    //     }
+    // });
+    res.render('index');
 });
 
 
 app.get("/welcome", auth, (req, res) => {
+    console.log('-------------welcome');
     // console.log('Cookies: ');
     // console.log(req.cookies);
     // console.log(req.body);

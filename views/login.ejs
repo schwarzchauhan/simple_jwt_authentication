@@ -2,21 +2,26 @@
     <section>
         <div class="container">
             <div class="my-form-cont">
-                <!-- https://getbootstrap.com/docs/5.0/forms/overview/ -->
-                <form action="/login" method="POST">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter the email...">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="pwd" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter the password...">
-                    </div>
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </div>
-                </form>
+                <h2 class="my-form-heading">LOGIN</h2>
+                <!-- https://stackoverflow.com/questions/5372559/what-is-the-proper-way-to-check-for-existence-of-variable-in-an-ejs-template-us/42993996 -->
+                <% if(locals.someMsg){ %>
+                    <span><%= someMsg %></span>
+                    <% }  %>
+                        <!-- https://getbootstrap.com/docs/5.0/forms/overview/ -->
+                        <form action="/login" method="POST">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter the email...">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="pwd" class="form-label">Password</label>
+                                <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter the password...">
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                        </form>
             </div>
         </div>
     </section>

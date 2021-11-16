@@ -10,3 +10,8 @@ body {
     background-color: #161b22;
     border-radius: 5px;
 }
+
+.my-form-heading {
+    text-align: center;
+    background-color: salmon;
+}

@@ -15,6 +15,7 @@ router.route('/')
 
 .post(async function(req, res) {
     try {
+        console.log('--------------login');
         console.log(req.body);
         const { email, pwd } = req.body;
 
@@ -25,10 +26,17 @@ router.route('/')
 
         // chk user already exists
         const u = await User.findOne({ email: email });
+        if (!u) {
+            return res.render('login', { someMsg: 'This email is not registered' });
+            // return console.log('user with this email not registered...');
+        }
         // console.log(u);
         // https://github.com/dcodeIO/bcrypt.js#usage---async
         // https://github.com/dcodeIO/bcrypt.js#compares-hash-callback-progresscallback
         const isCorrectPwd = await bcrypt.compare(pwd, u.password);
+        if (!isCorrectPwd) {
+            return res.render('login', { someMsg: 'Wrong password' });
+        }
         if (u && isCorrectPwd) {
             const token = jwt.sign({
                 _id: u._id
@@ -37,7 +45,7 @@ router.route('/')
             await u.save();
             // https://expressjs.com/en/api.html#res.cookie
             res.cookie('jwt', token);
-            console.log(u);
+            // console.log(u);
             return res.redirect('/welcome');
             // return res.status(201).json(u);
         }
