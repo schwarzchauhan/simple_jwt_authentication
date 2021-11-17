@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'password not provided'],
-        minlength: [8, 'password length must be at least 8 characters']
+        // https://mongoosejs.com/docs/api.html#schemastringoptions_SchemaStringOptions-minLength
+        minLength: [8, 'password length must be at least 8 characters']
     },
     token: {
         type: String

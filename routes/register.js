@@ -15,6 +15,7 @@ router.route('/')
 
 .post(async function(req, res) {
     try {
+        console.log('---------/register POST');
         console.log(req.body);
         const { email, pwd } = req.body;
 
@@ -26,7 +27,12 @@ router.route('/')
         // chk email already exists
         const old_user = await User.findOne({ email: email });
         if (old_user) {
-            return res.status(409).send('409 Conflict : User already exists');
+            return res.status(409).render('http', { imgUrl: '/pix/400a.jpg', status: '409: Conflict, User already exists' });
+        }
+
+        console.log(pwd.length);
+        if (pwd.length < 8) {
+            return res.status(400).render('register', { someMsg: 'Password must be of at least 8 characters!' });
         }
 
 
