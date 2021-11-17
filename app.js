@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser')
 const auth = require("./middleware/auth");
 const loginRoute = require('./routes/login');
 const registerRoute = require('./routes/register');
+const fileRoute = require('./routes/file');
 const app = express();
 
 
@@ -24,17 +25,12 @@ app.use(express.urlencoded({
 
 app.use('/register', registerRoute);
 app.use('/login', loginRoute);
-
+app.use('/api/file', fileRoute);
+app.use('/files', require('./routes/show'));
 
 app.route('/')
 
 .get((req, res) => {
-    // res.status(200).json({
-    //     status: 'success',
-    //     data: {
-    //         message: '/'
-    //     }
-    // });
     res.render('index');
 });
 

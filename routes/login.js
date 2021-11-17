@@ -21,7 +21,7 @@ router.route('/')
 
         // chk email, password
         if (!(email && pwd)) {
-            return res.status(400).send('all inputs are required');
+            return res.status(400).render('login', { someMsg: 'Credentials missing!' });
         }
 
         // chk user already exists

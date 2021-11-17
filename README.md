@@ -10,3 +10,15 @@ npm run start
 
 
 the jwt token will expire in 50 seconds so user need to login again
+
+
+/api/file                POST to upload file
+/files/:uuid             GET  to view the download link page
+/files/download/:uuid    GET  to download the file
+
+
+file
+
+// https://www.gbmb.org/mb-to-bytes
+1MegaByte = 2¹⁰*2¹⁰ = 2²⁰ bytes = 1,048,576 bytes (when base is 2)
+1KiloByte =           2¹⁰ bytes =      1024 bytes (when base is 2)

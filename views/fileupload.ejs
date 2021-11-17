@@ -1,0 +1,11 @@
+<%- include('./partials/header'); -%>
+
+    <section>
+        <form action="/api/file" method="post" enctype="multipart/form-data">
+            <input type="file" name="myFile">
+            <input type="submit" value="UPLOAD">
+        </form>
+    </section>
+
+
+    <%- include('./partials/footer'); -%>

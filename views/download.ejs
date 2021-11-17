@@ -1,0 +1,31 @@
+<%- include('./partials/header'); -%>
+
+    <section>
+
+        <% if(locals.someMsg){ %>
+            <span><%= someMsg %></span>
+            <% }  %>
+
+
+
+                <% if(locals.fileName){ %>
+                    <span><%= fileName %></span>
+                    <% }  %>
+
+                        <% if(locals.fileSize){ %>
+                            <span><%= parseInt(fileSize/1024)  %> KB</span>
+                            <% }  %>
+
+
+                                <% if(locals.downloadUrl){ %>
+                                    <button class="btn-primary">
+                                                <a href="<%= downloadUrl %>" class="text-reset text-decoration-none">
+                                                    Download
+                                                </a>
+                                            </button>
+
+                                    <% }  %>
+    </section>
+
+
+    <%- include('./partials/footer'); -%>
