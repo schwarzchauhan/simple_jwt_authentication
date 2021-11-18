@@ -13,7 +13,21 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(morgan('dev'));
+
+
+morgan.token('id', function getId(req) {
+    return req.id
+})
+
+// app.use(morgan('dev')); // https://github.com/expressjs/morgan#dev
+app.use(assignId);
+app.use(morgan(':id :method :url :status :res[content-length] - :response-time ms'));
+
+function assignId(req, res, next) {
+    req.id = '----------'
+    next();
+}
+
 // to serve static content
 app.use(express.static(path.join(__dirname, 'public')));
 // setting html template
@@ -51,6 +65,9 @@ app.get("/welcome", auth, (req, res) => {
         }
     });
 });
+
+
+
 
 module.exports = app;
 // app.listen(process.env.PORT || 3000, function() {

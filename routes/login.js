@@ -55,4 +55,10 @@ router.route('/')
     }
 });
 
+router.route('/forgotpwd')
+
+.get((req, res) => {
+
+});
+
 module.exports = router;

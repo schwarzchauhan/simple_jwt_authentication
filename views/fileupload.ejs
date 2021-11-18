@@ -4,36 +4,37 @@
 
         <div class="my-fileupload-cont text-center my-test">
             <div class="d-flex justify-content-center">
-                <div class="p-3 my-test">
-                    <form action="/api/file" method="post" enctype="multipart/form-data">
-                        <input type="file" name="myFile">
-                        <br>
-                        <input type="submit" class="btn-primary" value="UPLOAD">
-                    </form>
+                <div class="card" style="width: 18rem;">
+                    <img src="/pix/fileupload.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <form action="/api/file" method="post" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label"></label>
+                                <input class="form-control" type="file" name="myFile" id="formFile">
+                            </div>
+                            <input type="submit" class="btn-primary mb-3" value="UPLOAD">
+                        </form>
+                        <% if(locals.downloadUrl) { %>
+                            <div class="d-flex justify-content-center">
+                                <div class="input-group mb-3" style="max-width: 576px;">
+                                    <input type="text" id="myDownloadUrl" value="<%= downloadUrl %>" class="form-control" placeholder="download url" aria-label="download url" aria-describedby="my-button-addon">
+                                    <button class="btn btn-secondary" type="button" id="my-button-addon">📑</button>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <form action="/api/file/mail" method="post">
+                                    <input type="hidden" name="downloadUrl" value="<%= downloadUrl %>">
+                                    <div class="input-group mb-3">
+                                        <input type="email" class="form-control" name="email" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                        <button class="btn btn-secondary" type="submit" id="button-addon2">Mail 📧</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <% } %>
+                    </div>
                 </div>
             </div>
-            <% if(locals.downloadUrl) { %>
-                <div class="d-flex justify-content-center">
-                    <div class="p-3 my-test">
-                        <div class="input-group mb-3" style="max-width: 576px;">
-                            <input type="text" id="myDownloadUrl" value="<%= downloadUrl %>" class="form-control" placeholder="download url" aria-label="download url" aria-describedby="my-button-addon">
-                            <button class="btn btn-secondary" type="button" id="my-button-addon">📑</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <div class="p-3 my-test">
-                        <form action="/api/file/mail" method="post">
-                            <input type="hidden" name="downloadUrl" value="<%= downloadUrl %>">
-                            <div class="input-group mb-3">
-                                <input type="email" class="form-control" name="email" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Mail 📧</button>
-                            </div>
 
-                        </form>
-                    </div>
-                </div>
-                <% } %>
         </div>
 
     </section>
