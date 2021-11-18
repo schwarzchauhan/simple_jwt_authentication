@@ -5,6 +5,4 @@
 
 # Dependency directories
 node_modules/
-jspm_packages/'
-
-public/uploads/*
+jspm_packages/
