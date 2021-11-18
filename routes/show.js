@@ -10,7 +10,7 @@ router.route('/:uuid')
 
 .get(async(req, res) => {
     try {
-        console.log('------------------/file/:uuid GET');
+        console.log('------------------/files/:uuid GET');
         console.log(req.params);
         // https://mongoosejs.com/docs/api.html#model_Model.findOne
         const f = await File.findOne({ uuid: req.params.uuid });
