@@ -34,13 +34,14 @@ router.route('/')
     // store file
     upload(req, res, async(err) => {
         try {
+            if (err) { return res.status(500).send({ error: err.message }); }
+
             // chk if file uploaded or not
             if (!req.file) {
                 return res.status(400).json({
                     error: 'all fields are required'
                 });
             }
-            if (err) { return res.status(500).send({ error: err.message }); }
 
             //
             console.log(req.file);
