@@ -21,7 +21,7 @@ let storage = multer.diskStorage({
 });
 let upload = multer({
     storage: storage,
-    limits: { fileSize: 100 * 1024 } // file size in bytes, 100 KB
+    limits: { fileSize: 10 * 1024 * 1024 } // file size in bytes, 10 MB
 }).single('myFile'); // 'myFile' should be name attribut in our upload  forrm
 
 router.route('/')
