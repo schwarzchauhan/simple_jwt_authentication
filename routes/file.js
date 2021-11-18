@@ -9,7 +9,8 @@ const { v4: uuid4 } = require('uuid');
 
 let storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, '../public/uploads')
+        console.log(__dirname);
+        cb(null, `${__dirname}/../public/uploads`)
     },
     filename: (req, file, cb) => {
         console.log(file);
