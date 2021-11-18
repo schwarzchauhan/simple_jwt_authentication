@@ -10,7 +10,7 @@ router.route('/:uuid')
 
 .get(async(req, res) => {
     try {
-        console.log('------------------/files/:uuid GET');
+        console.log('------------------GET /files/:uuid');
         console.log(req.params);
         // https://mongoosejs.com/docs/api.html#model_Model.findOne
         const f = await File.findOne({ uuid: req.params.uuid });
@@ -67,7 +67,8 @@ router.route('/download/:uuid')
         if (!f) {
             return res.render('download', { someMsg: 'Link has been  expired' });
         }
-        const filePath = `${__dirname}/../${f.path}`;
+        // const filePath = `${__dirname}/../${f.path}`;
+        const filePath = f.path; // chk sometime, it should also work
         console.log(filePath);
         res.download(filePath);
         // res.send("hello world");
