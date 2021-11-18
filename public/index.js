@@ -9,4 +9,11 @@ $(document).ready(function() {
         console.log(e[0]);
         e.addClass('text-decoration-none');
     }
+    $('#my-button-addon').click(() => {
+        // https://api.jquery.com/val/
+        const downloadUrl = $('#myDownloadUrl').val();
+        console.log(downloadUrl);
+        // https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+        navigator.clipboard.writeText(downloadUrl);
+    });
 });

@@ -20,6 +20,11 @@ section {
     background-color: salmon;
 }
 
+.my-download-cont img {
+    background-color: rgba(0, 0, 0, 0.76);
+    height: 200px;
+}
+
 .my-http-cont {
     max-width: 576px;
 }

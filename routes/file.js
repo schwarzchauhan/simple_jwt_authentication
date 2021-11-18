@@ -30,6 +30,7 @@ router.route('/')
 })
 
 .post(function(req, res) {
+    console.log('----------- /api/file POST');
     // store file
     upload(req, res, async(err) => {
         try {
@@ -51,11 +52,22 @@ router.route('/')
                 size: req.file.size
             });
             const response = await file.save();
-            return res.json({ file: `${process.env.APP_BASE_URL}/files/${response.uuid}` });
+            // return res.json({ file: `${process.env.APP_BASE_URL}/files/${response.uuid}` });
+            return res.render('fileupload', { downloadUrl: `${process.env.APP_BASE_URL}/files/${response.uuid}` });
         } catch (err) {
             return res.json({ error: err.message });
         }
     });
 });
+
+router.route('/mail')
+
+.post(async(req, res) => {
+    try {
+        return res.status(200).json(req.body);
+    } catch (err) {
+        return console.log(err.message);
+    }
+})
 
 module.exports = router;

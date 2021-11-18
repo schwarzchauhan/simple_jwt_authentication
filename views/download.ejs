@@ -7,24 +7,29 @@
             <% }  %>
 
 
+                <div class="my-download-cont text-center">
+                    <div class="d-flex justify-content-center">
+                        <div class="card" style="width: 18rem;">
+                            <img src="/pix/download.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <% if(locals.fileName){ %>
+                                        <span><%= fileName %></span>
+                                        <% }  %>
+                                </h5>
+                                <p class="card-text">
+                                    <% if(locals.fileSize){ %>
+                                        <%= parseInt(fileSize/1024)  %> KB
+                                            <% }  %>
+                                </p>
+                                <a href="<%= downloadUrl %>" class="btn btn-primary">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <% if(locals.fileName){ %>
-                    <span><%= fileName %></span>
-                    <% }  %>
-
-                        <% if(locals.fileSize){ %>
-                            <span><%= parseInt(fileSize/1024)  %> KB</span>
-                            <% }  %>
 
 
-                                <% if(locals.downloadUrl){ %>
-                                    <button class="btn-primary">
-                                                <a href="<%= downloadUrl %>" class="text-reset text-decoration-none">
-                                                    Download
-                                                </a>
-                                            </button>
-
-                                    <% }  %>
     </section>
 
 
