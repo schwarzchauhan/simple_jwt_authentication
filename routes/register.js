@@ -56,7 +56,7 @@ router.route('/')
         // sending user successfully created response
         console.log(u);
         // res.status(201).json(u);
-        res.redirect('/welcome')
+        res.redirect('/welcome');
 
     } catch (err) {
         console.log(err);

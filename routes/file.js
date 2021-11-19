@@ -4,7 +4,7 @@ const User = require('../model/user');
 // http://expressjs.com/en/resources/middleware/multer.html
 const multer = require('multer');
 const File = require('../model/file');
-const { v4: uuid4 } = require('uuid');
+const { v4: uuid4 } = require('uuid'); // https://github.com/uuidjs/uuid#quickstart
 
 // https://github.com/expressjs/multer/issues/591
 let storage = multer.diskStorage({
