@@ -32,3 +32,19 @@ section {
 .my-test {
     border: 2px solid violet;
 }
+
+
+/* misc. classed */
+
+.rotate {
+    animation: rotate 0.5s normal 0s 1 none;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}

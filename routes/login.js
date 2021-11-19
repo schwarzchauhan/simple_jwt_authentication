@@ -184,7 +184,7 @@ router.route('/reset-pwd/:_id/:token')
 
         // get user _id from by verifyng jsonwebtoken 
         const secret = process.env.JWT_KEY + user.password;
-        const decoded = jwt.verify(token, secret);
+        const decoded = jwt.verify(token, secret); // https://github.com/auth0/node-jsonwebtoken#jwtverifytoken-secretorpublickey-options-callback
         if (!decoded) {
             return res.status(404).render('http', { imgUrl: '/pix/404a.jpg', status: '404: Not Found, Password reset link has been expired' });
         }

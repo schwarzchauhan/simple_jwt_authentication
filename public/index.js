@@ -16,4 +16,14 @@ $(document).ready(function() {
         // https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
         navigator.clipboard.writeText(downloadUrl);
     });
+
+    // ~~~~~~~~~~~~~~~~~~~ div.f-social
+    $('.my-social-link-cont a>i').mouseenter(function() {
+        console.log($(this));
+        $(this).addClass('rotate');
+
+        setTimeout(() => {
+            $(this).removeClass('rotate');
+        }, 500);
+    });
 });
